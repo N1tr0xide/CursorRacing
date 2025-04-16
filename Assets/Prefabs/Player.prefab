@@ -52,7 +52,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -130,8 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb32f9df876e6234db5e6485927a46dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
-  rotationSpeed: 5
+  _reverseEnabled: 0
+  _acceleration: 15
+  _maxSpeed: 50
+  _turningRate: 2.5
+  _driftFactor: 0.95
 --- !u!114 &144765535938922533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,10 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c395aa0aace86499b18ce2fa86e744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skidThreshold: 0.5
-  skidMarkTrails:
-  - {fileID: 7398006687584858012}
-  - {fileID: 6416012604651381890}
+  _skidThreshold: 0.75
+  _skidMarkTrails: []
 --- !u!1 &837781385350912782
 GameObject:
   m_ObjectHideFlags: 0
