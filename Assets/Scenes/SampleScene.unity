@@ -455,7 +455,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
+  UpdateMethod: 0
   BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
@@ -973,8 +973,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 619394802}
   - {fileID: 519420032}
+  - {fileID: 1270586916}
   - {fileID: 423398747739179937}
   - {fileID: 1821059838507625917}
-  - {fileID: 1270586916}
   - {fileID: 69883503}
   - {fileID: 67252300}

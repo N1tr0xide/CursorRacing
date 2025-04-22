@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,7 +10,8 @@ public class Player : MonoBehaviour
     private float _throttleInput;
     [SerializeField] private bool _reverseEnabled;
     private float _velocity;
-
+    [SerializeField] private bool _isCollidingWall;
+    
     [Header("Car Settings")] 
     [SerializeField] private float _acceleration = 50; 
     [SerializeField] private float _maxSpeed = 50;
@@ -27,17 +29,19 @@ public class Player : MonoBehaviour
         _input.Enable();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
         _velocity = _rb.linearVelocity.magnitude;
         _throttleInput = _input.Player.Touch.ReadValue<float>();
         
-        //_pointerPosInput = _camera.ScreenToWorldPoint(_input.Player.Look.ReadValue<Vector2>());
+        //_pointerPosInput = _camera.ScreenToWorldPoint(_input.Player.Look.ReadValue<Vector2>()); //CURSOR INPUT
         Vector2 a = _camera.WorldToScreenPoint((Vector2)transform.position);
         _pointerPosInput = _camera.ScreenToWorldPoint(a + _input.Player.Joystick.ReadValue<Vector2>() * 15);
-        print(_pointerPosInput);
-        
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         ApplyEngineForce();
         KillSideVelocity();
         ApplySteering();
@@ -46,7 +50,7 @@ public class Player : MonoBehaviour
     /// Applies force forwards in the direction car is facing. Applies drag if input is zero.
     private void ApplyEngineForce()
     {
-        if (_throttleInput == 0)
+        if (_throttleInput == 0 || _isCollidingWall)
         {
             _rb.linearDamping = Mathf.Lerp(_rb.linearDamping, 3 ,Time.fixedDeltaTime * 3);
             return;
@@ -94,5 +98,15 @@ public class Player : MonoBehaviour
     public float GetLateralSpeed()
     {
         return Vector3.Dot(_rb.linearVelocity, transform.right) + Vector3.Dot(_rb.linearVelocity, transform.forward);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        _isCollidingWall = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        _isCollidingWall = false;
     }
 }

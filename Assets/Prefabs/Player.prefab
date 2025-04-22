@@ -133,7 +133,7 @@ MonoBehaviour:
   _reverseEnabled: 0
   _acceleration: 15
   _maxSpeed: 50
-  _turningRate: 2.5
+  _turningRate: 3
   _driftFactor: 0.95
 --- !u!114 &144765535938922533
 MonoBehaviour:

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1314372982302429214}
   m_Layer: 0
   m_Name: InsideColliders
-  m_TagString: Untagged
+  m_TagString: Track
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 3460910609953775133}
   m_Layer: 0
   m_Name: OutsideCollider
-  m_TagString: Untagged
+  m_TagString: Track
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 7738484114834777527}
   m_Layer: 0
   m_Name: Track1
-  m_TagString: Untagged
+  m_TagString: Track
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
