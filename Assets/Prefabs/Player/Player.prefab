@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 144765535938922533}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reverseEnabled: 0
+  _isCollidingWall: 0
   _acceleration: 15
   _maxSpeed: 50
   _turningRate: 3
@@ -147,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c395aa0aace86499b18ce2fa86e744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skidThreshold: 0.75
+  _skidThreshold: 1.5
   _skidMarkTrails: []
 --- !u!1 &837781385350912782
 GameObject:
@@ -224,7 +225,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
   m_Sprite: {fileID: -1419973813561472193, guid: 61cabd615b8500f4b8bd16334e039379, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

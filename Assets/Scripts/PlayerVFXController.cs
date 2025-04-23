@@ -16,9 +16,9 @@ public class PlayerVFXController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (TrailRenderer renderer in _skidMarkTrails)
+        foreach (TrailRenderer tr in _skidMarkTrails)
         {
-            renderer.emitting = Mathf.Abs(_player.GetLateralSpeed()) > _skidThreshold;
+            tr.emitting = Mathf.Abs(_player.GetLateralSpeed()) > _skidThreshold;
         }
     }
 }
