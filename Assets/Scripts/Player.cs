@@ -8,16 +8,16 @@ public class Player : MonoBehaviour
     private Camera _camera;
     private Vector2 _pointerPosInput;
     private float _throttleInput;
-    [SerializeField] private bool _reverseEnabled;
     private float _velocity;
     [SerializeField] private bool _isCollidingWall;
-    
+
     [Header("Car Settings")] 
     [SerializeField] private float _acceleration = 50; 
     [SerializeField] private float _maxSpeed = 50;
     [SerializeField] private float _turningRate = 5f;
     [SerializeField] private float _driftFactor = .95f;
 
+    public bool _reverseEnabled;
     public float Velocity => _velocity;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
