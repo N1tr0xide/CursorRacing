@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _turningRate = 5f;
     [SerializeField] private float _driftFactor = .95f;
 
-    public bool _reverseEnabled;
+    public bool ReverseEnabled;
     public float Velocity => _velocity;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,6 +27,16 @@ public class Player : MonoBehaviour
         _input = new InputSystem_Actions();
         _rb = GetComponent<Rigidbody2D>();
         _input.Enable();
+    }
+
+    private void OnDisable()
+    {
+        DisableInput();
+    }
+
+    public void DisableInput()
+    {
+        _input.Disable();
     }
 
     private void Update()
@@ -50,18 +60,14 @@ public class Player : MonoBehaviour
     /// Applies force forwards in the direction car is facing. Applies drag if input is zero.
     private void ApplyEngineForce()
     {
-        if (_throttleInput == 0 || _isCollidingWall)
-        {
-            _rb.linearDamping = Mathf.Lerp(_rb.linearDamping, 3 ,Time.fixedDeltaTime * 3);
-            return;
-        }
+        _rb.linearDamping = _throttleInput == 0 || (_isCollidingWall && _velocity > 0)
+            ? Mathf.Lerp(_rb.linearDamping, 3, Time.fixedDeltaTime * 3)
+            : 0;
 
         if (SpeedClampCheck()) return;
-
-        _rb.linearDamping = 0;
+       
         Vector2 engineForce = transform.up * (_acceleration * _throttleInput);
-        
-        if(_reverseEnabled) _rb.AddForce(-engineForce, ForceMode2D.Force);
+        if(ReverseEnabled) _rb.AddForce(-engineForce, ForceMode2D.Force);
         else _rb.AddForce(engineForce, ForceMode2D.Force);
     }
     

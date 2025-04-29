@@ -8,7 +8,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private List<CheckPointController> _checkPoints;
     [SerializeField] private GameUIManager _uiManager;
     private int _nextCheckPoint = 0, _lap = 1;
-    private float _lapTime;
+    private float _lapTime, _trackTime;
     private bool _runTimer = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,9 +32,20 @@ public class RaceManager : MonoBehaviour
     {
         if (AllCheckPointsPassed())
         {
+            _trackTime += _lapTime;
             _uiManager.SetPastLapTime(_lapTime, _lap);
             _lap++;
-            _uiManager.UpdateLapCounter(_lap);
+
+            if (_lap >= 4) //End of race
+            {
+                Player player = FindFirstObjectByType<Player>();
+                player.DisableInput();
+                _uiManager.SetGameOverPanel(true, _trackTime);
+                _runTimer = false;
+                return;
+            }
+            
+            _uiManager.UpdateLapCounter(_lap); //End of lap, start next lap.
             _nextCheckPoint = 0;
             _lapTime = 0;
             foreach (CheckPointController pc in _checkPoints)
@@ -44,8 +55,6 @@ public class RaceManager : MonoBehaviour
             return;
         }
 
-        if (cpc.Passed) return;
-        _lapTime = 0;
         _runTimer = true;
     }
     
