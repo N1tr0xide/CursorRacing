@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     public bool ReverseEnabled;
     public float Velocity => _velocity;
+    public float MaxSpeed => _maxSpeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -75,9 +76,9 @@ public class Player : MonoBehaviour
     private bool SpeedClampCheck()
     {
         float forwardSpeed = Vector2.Dot(transform.up, _rb.linearVelocity);
-        if(forwardSpeed > _maxSpeed && _throttleInput > 0) return true; //max speed clamp
-        if(forwardSpeed < -_maxSpeed * .25f && _throttleInput > 0) return true; //max reverse speed clamp
-        return _rb.linearVelocity.sqrMagnitude > _maxSpeed * _maxSpeed && _throttleInput > 0; //max any direction speed clamp
+        if(forwardSpeed > MaxSpeed && _throttleInput > 0) return true; //max speed clamp
+        if(forwardSpeed < -MaxSpeed * .25f && _throttleInput > 0) return true; //max reverse speed clamp
+        return _rb.linearVelocity.sqrMagnitude > MaxSpeed * MaxSpeed && _throttleInput > 0; //max any direction speed clamp
     }
     
     /// Steer the car towards the screen position of the pointer
@@ -103,7 +104,8 @@ public class Player : MonoBehaviour
 
     public float GetLateralSpeed()
     {
-        return Vector3.Dot(_rb.linearVelocity, transform.right) + Vector3.Dot(_rb.linearVelocity, transform.forward);
+        return Vector2.Dot(transform.right, _rb.linearVelocity);
+            //Vector3.Dot(_rb.linearVelocity, transform.right) + Vector3.Dot(_rb.linearVelocity, transform.forward);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
