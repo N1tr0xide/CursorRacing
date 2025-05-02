@@ -21,8 +21,14 @@ public class Player : MonoBehaviour
     public float Velocity => _velocity;
     public float MaxSpeed => _maxSpeed;
 
+    public InputSystem_Actions Input
+    {
+        get => _input;
+        set => _input = value;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         _camera = Camera.main;
         _input = new InputSystem_Actions();

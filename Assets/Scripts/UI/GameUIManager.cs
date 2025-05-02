@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameUIManager : MonoBehaviour
@@ -23,6 +24,12 @@ public class GameUIManager : MonoBehaviour
         _gearAnimator.Play(anim);
         Pause(false);
         SetGameOverPanel(false);
+        _player.Input.Player.GearSwitch.performed += GearSwitchPerformed;
+    }
+
+    private void GearSwitchPerformed(InputAction.CallbackContext obj)
+    {
+        SwitchGears();
     }
 
     public void UpdateLapCounter(int lap)

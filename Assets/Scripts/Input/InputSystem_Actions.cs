@@ -53,6 +53,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GearSwitch"",
+                    ""type"": ""Button"",
+                    ""id"": ""d99b89ce-1578-4fba-bb10-b186d7432a70"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +174,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Joystick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e5113eb-2101-4260-98b2-2e333b91b035"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GearSwitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1845f7d-c8be-4eef-a9d4-cf58a3b683e0"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GearSwitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -753,6 +784,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Touch = m_Player.FindAction("Touch", throwIfNotFound: true);
         m_Player_Joystick = m_Player.FindAction("Joystick", throwIfNotFound: true);
+        m_Player_GearSwitch = m_Player.FindAction("GearSwitch", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -835,6 +867,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Touch;
     private readonly InputAction m_Player_Joystick;
+    private readonly InputAction m_Player_GearSwitch;
     public struct PlayerActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -842,6 +875,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Touch => m_Wrapper.m_Player_Touch;
         public InputAction @Joystick => m_Wrapper.m_Player_Joystick;
+        public InputAction @GearSwitch
+        {
+            get => m_Wrapper.m_Player_GearSwitch;
+            set => throw new NotImplementedException();
+        }
+
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -860,6 +899,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Joystick.started += instance.OnJoystick;
             @Joystick.performed += instance.OnJoystick;
             @Joystick.canceled += instance.OnJoystick;
+            @GearSwitch.started += instance.OnGearSwitch;
+            @GearSwitch.performed += instance.OnGearSwitch;
+            @GearSwitch.canceled += instance.OnGearSwitch;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -873,6 +915,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Joystick.started -= instance.OnJoystick;
             @Joystick.performed -= instance.OnJoystick;
             @Joystick.canceled -= instance.OnJoystick;
+            @GearSwitch.started -= instance.OnGearSwitch;
+            @GearSwitch.performed -= instance.OnGearSwitch;
+            @GearSwitch.canceled -= instance.OnGearSwitch;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1058,6 +1103,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnTouch(InputAction.CallbackContext context);
         void OnJoystick(InputAction.CallbackContext context);
+        void OnGearSwitch(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

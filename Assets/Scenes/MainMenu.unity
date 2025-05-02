@@ -374,6 +374,69 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2312084468288086619, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_text
+      value: 'Cursor
+
+        Racing!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190741526181164558, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260578268501077837, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840160159484926045, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320360812525022472, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701104072758363509, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5701104072758363509, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -425
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120991457139648138, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_text
+      value: 'The car will accelerate towards your mouse when you hold left click.
+        You can accurately control the direction of the car using your mouse.
+
+
+        Release
+        the left mouse button to slow down the car and control its position. Take
+        sharp corners and maintain an optimal racing line by timing your clicks and
+        releases effectively.
+
+
+        Use right click to switch between forward
+        and reverse. Reverse can help you recover from tough angles, reposition yourself,
+        or refine your approach.
+
+
+        You have three laps to complete. Make
+        precise movements, navigate the track efficiently, and aim for the fastest
+        lap time.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120991457139648138, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_fontSize
+      value: 23.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6821705265030992881, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8786685243998316025, guid: 3c4c8d7f210d26142a07c305cbff9bea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
