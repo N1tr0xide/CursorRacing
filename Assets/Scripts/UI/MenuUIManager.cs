@@ -3,12 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuUIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject trackSelectPanel, howToPanel;
+    [SerializeField] private GameObject _trackSelectPanel, _howToPanel, _creditsPanel;
 
     private void Start()
     {
-        trackSelectPanel.SetActive(false);
-        howToPanel.SetActive(false);
+        _trackSelectPanel.SetActive(false);
+        _howToPanel.SetActive(false);
+        _creditsPanel.SetActive(false);
     }
 
     public void LoadLevel(string levelName)
@@ -18,12 +19,17 @@ public class MenuUIManager : MonoBehaviour
 
     public void SetHowToPanel(bool activeState)
     {
-        howToPanel.SetActive(true);
+        _howToPanel.SetActive(activeState);
     }
 
     public void SetTrackSelectPanel(bool activeState)
     {
-        trackSelectPanel.SetActive(activeState);
+        _trackSelectPanel.SetActive(activeState);
+    }
+    
+    public void SetCreditsPanel(bool activeState)
+    {
+        _creditsPanel.SetActive(activeState);
     }
 
     public void Quit()

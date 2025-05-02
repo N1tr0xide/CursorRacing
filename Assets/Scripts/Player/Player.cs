@@ -45,9 +45,12 @@ public class Player : MonoBehaviour
         _velocity = _rb.linearVelocity.magnitude;
         _throttleInput = _input.Player.Touch.ReadValue<float>();
         
-        //_pointerPosInput = _camera.ScreenToWorldPoint(_input.Player.Look.ReadValue<Vector2>()); //CURSOR INPUT
+#if UNITY_ANDROID
         Vector2 a = _camera.WorldToScreenPoint((Vector2)transform.position);
         _pointerPosInput = _camera.ScreenToWorldPoint(a + _input.Player.Joystick.ReadValue<Vector2>() * 15);
+#else
+        _pointerPosInput = _camera.ScreenToWorldPoint(_input.Player.Look.ReadValue<Vector2>()); //CURSOR INPUT
+#endif
     }
 
     // Update is called once per frame
